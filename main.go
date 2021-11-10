@@ -35,5 +35,29 @@ func wgWait() {
 func main() {
 
 	wgWait()
+	channelStudy()
 
+}
+
+func channelStudy() {
+	c := make(chan int)
+	// <name > chan <datatype>
+
+	// send
+	go func() {
+		c <- 1
+	}()
+
+	//sniff
+	val := <-c
+
+	fmt.Println(val)
+	// send
+	go func() {
+		c <- 2
+	}()
+	//sniff
+	val = <-c
+	fmt.Println(val)
+	fmt.Println(c)
 }
